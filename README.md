@@ -26,7 +26,7 @@ Choose Mac/Linux (or Windows, if you’re using Windows).
 
 Copy the ‘ssh -i’ line from the prompt and paste into a terminal shell to connect to your cluster. Save this line in a text editor, as we’ll refer to it frequently.
 
-ssh -i ~/sshaws/swaws-key-pair-useast.pem hadoop@ec2-52-91-xx-xxx.compute-1.amazonaws.com
+ssh -i ~/xxx.pem hadoop@ec2-52-91-xx-xxx.compute-1.amazonaws.com
 
 
 ##2. get the name node ips:
@@ -43,7 +43,7 @@ Instead use the hdfs command for it.
 
 ##4. We need to our AWS key pair / .pem file to our local SSH agent.
 
-ssh-add ~/.ssh/SparkCluster.pem
+ssh-add ~/.ssh/xxx.pem
 
 ##5. Now we’ll re-connect to AWS (again, replace the below connection information with your AWS DNS information).
 
