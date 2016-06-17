@@ -26,7 +26,7 @@ Choose Mac/Linux (or Windows, if you’re using Windows).
 
 Copy the ‘ssh -i’ line from the prompt and paste into a terminal shell to connect to your cluster. Save this line in a text editor, as we’ll refer to it frequently.
 
-ssh -i ~/sshaws/swaws-key-pair-useast.pem hadoop@ec2-52-91-54-115.compute-1.amazonaws.com
+ssh -i ~/sshaws/swaws-key-pair-useast.pem hadoop@ec2-52-91-xx-xxx.compute-1.amazonaws.com
 
 
 ##2. get the name node ips:
@@ -36,8 +36,8 @@ hadoop dfsadmin -report | grep ^Name | cut -f2 -d: | cut -f2 -d' '
 DEPRECATED: Use of this script to execute hdfs command is deprecated.
 Instead use the hdfs command for it.
 
-172.31.39.12
-172.31.39.14
+172.31.xx.xx
+172.31.xx.xx
 
 ##3. exit
 
@@ -47,7 +47,7 @@ ssh-add ~/.ssh/SparkCluster.pem
 
 ##5. Now we’ll re-connect to AWS (again, replace the below connection information with your AWS DNS information).
 
-ssh -A hadoop@ec2-52-91-154-39.compute-1.amazonaws.com
+ssh -A hadoop@ec2-xx-xx-xx-xx.compute-1.amazonaws.com
 
 
 ##6. Python Upgrade Steps
@@ -73,7 +73,7 @@ Python Upgrade on the Data Node(s)
 
 We need to repeat the python upgrade steps for each data node in our cluster. The steps remain the same as above, but in order to connect to our data nodes we can execute the following command (be sure to replace the IP address listed below with the IP addresses we obtained via the hadoop dfsadmin command in the section labeled ‘Upgrading Python on each node in the cluster’).
 
-ssh hadoop@172.31.39.12
+ssh hadoop@172.xx.xx.xx
 
 This should log you in automatically to the data node. Repeat the above steps to ugprade python. Once complete, connect to each subsequent data node IP address and upgrade python until all data nodes are upgraded. You should be able to paste the entire block of text, rather than each line individually. Remember to close each SSH connection (use the exit command) after upgrading and return to the name node before connecting to the next data node.
 
@@ -85,7 +85,7 @@ This should log you in automatically to the data node. Repeat the above steps to
 PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.databricks:spark-csv_2.10:1.1.0 --master spark://spark_master_hostname:7077 --executor-memory 6400M --driver-memory 6400M
 
 ##9.
-ssh -N -f -L localhost:7776:localhost:7777 hadoop@ec2-52-91-54-115.compute-1.amazonaws.com
+ssh -N -f -L localhost:7776:localhost:7777 hadoop@ec2-xx-xx-xx-xxx.compute-1.amazonaws.com
 
 ##10.
 http://localhost:7776
